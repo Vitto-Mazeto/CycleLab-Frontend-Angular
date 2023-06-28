@@ -9,23 +9,6 @@
 .ff-inter { font-family: 'Inter', sans-serif; }
 .ff-roboto { font-family: 'Roboto', sans-serif; }
 
-h1 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-}
-
-h2 {
-  color: #154580;
-  font-weight: bold;
-  font-size: 2rem;
-  text-align: center;
-}
-
-.header {
-  margin: 1rem auto 2rem;
-}
 
 .container {
   padding-right: 1rem;
