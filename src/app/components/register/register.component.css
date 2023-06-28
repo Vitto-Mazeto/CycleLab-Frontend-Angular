@@ -1,0 +1,72 @@
+.register-container {
+    display: flex;
+    height: 86vh;
+  }
+  
+  .left-section {
+    flex: 1;
+    padding: 20px;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative; 
+  }
+  
+  .logo-section {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  .logo-section h1 {
+    font-size: 24px;
+  }
+  
+  .logo-section img {
+    height: 7em; 
+    position: absolute; 
+    top: -1em; 
+    left: 0.7em; 
+  }
+  
+  .right-section {
+    flex: 1;
+  }
+  
+  .right-section img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  
+  input {
+    width: 98%;
+    padding: 8px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    height: 1.8em;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+  }
+  
