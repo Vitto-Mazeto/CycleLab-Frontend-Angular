@@ -1,16 +1,23 @@
 <header>
-    <div class="left-section">
-      <h1 class="ff-roboto">CycleLab: Saúde para todos</h1>
-    </div>
-    <nav class="middle-section">
-      <ul>
-        <li><a class="ff-inter" routerLink="/">Home</a></li>
-        <li><a class="ff-inter" routerLink="/sobre">Sobre nós</a></li>
-        <li><a class="ff-inter" routerLink="/missao">Missão</a></li>
-      </ul>
-    </nav>
-    <div class="right-section">
-      <a class="ff-inter" routerLink="/cadastro">Cadastre-se</a>
-      <a class="ff-inter" routerLink="/login">Login</a>
-    </div>
-  </header>
+  <div class="left-section">
+    <h1 class="ff-roboto">CycleLab: Saúde para todos</h1>
+  </div>
+  <nav class="middle-section">
+    <ul>
+      <li><a class="ff-inter" routerLink="/">Home</a></li>
+      <!-- Aparece não Logado -->
+      <li *ngIf="!isLoggedIn"><a class="ff-inter" routerLink="/sobre">Sobre nós</a></li>
+      <li *ngIf="!isLoggedIn"><a class="ff-inter" routerLink="/missao">Missão</a></li>
+      <!-- Aparece Logado -->
+      <li *ngIf="isLoggedIn"><a class="ff-inter" routerLink="/amostras">Amostras</a></li>
+      <li *ngIf="isLoggedIn"><a class="ff-inter" routerLink="/usuarios">Usuários</a></li>
+    </ul>
+  </nav>
+  <div class="right-section">
+    <!-- Aparece não Logado -->
+    <a class="ff-inter" *ngIf="!isLoggedIn" routerLink="/cadastro">Cadastre-se</a>
+    <!-- Aparece Logado -->
+    <a class="ff-inter" *ngIf="isLoggedIn" routerLink="/profile">Perfil</a>
+    <a class="ff-inter" *ngIf="isLoggedIn" routerLink="/logout">Sair</a>
+  </div>
+</header>
