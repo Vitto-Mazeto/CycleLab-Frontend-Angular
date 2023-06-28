@@ -1,29 +1,46 @@
 <div class="register-container">
-    <div class="left-section">
-      <div class="logo-section">
-        <img src="../../../assets/images/CycleLabLogo-NoBg.png" alt="Imagem de fundo">
-        <h1 class="ff-roboto">Cadastre-se</h1>
+  <div class="left-section">
+    <div class="logo-section">
+      <img src="../../../assets/images/CycleLabLogo-NoBg.png" alt="Imagem de fundo">
+      <h1 class="ff-roboto">Cadastre-se</h1>
+    </div>
+    <form [formGroup]="formulario" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="email" class="ff-roboto">Email:</label>
+        <input type="email" id="email" formControlName="email" placeholder="Digite seu Email">
+        <div class="mensagem__erro" *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched">
+          Email é obrigatório!
+        </div>
+        <div class="mensagem__erro" *ngIf="formulario.get('email')?.errors?.['email'] && formulario.get('email')?.touched">
+          Por favor, insira um email válido!
+        </div>
       </div>
-      <form>
-        <div class="form-group">
-          <label for="email" class="ff-roboto">Email:</label>
-          <input type="email" id="email" name="email" placeholder="Digite seu Email">
+      <div class="form-group">
+        <label for="password" class="ff-roboto">Senha:</label>
+        <input type="password" id="password" formControlName="password" placeholder="Digite sua Senha">
+        <div class="mensagem__erro" *ngIf="formulario.get('password')?.errors?.['required'] && formulario.get('password')?.touched">
+          Senha é obrigatória!
         </div>
-        <div class="form-group">
-          <label for="password" class="ff-roboto">Senha:</label>
-          <input type="password" id="password" name="password" placeholder="Digite sua Senha">
+        <div class="mensagem__erro" *ngIf="formulario.get('password')?.errors?.['pattern'] && formulario.get('password')?.touched">
+          Senha deve conter: 6 caracteres, caracter especial, letra maiúscula, número
         </div>
-        <div class="form-group">
-          <label for="password_confirmation" class="ff-roboto">Confirmação da Senha:</label>
-          <input type="password_confirmation" id="password_confirmation" name="password_confirmation" placeholder="Digite sua Senha Novamente">
+      </div>
+      <div class="form-group">
+        <label for="password_confirmation" class="ff-roboto">Confirmação da Senha:</label>
+        <input type="password" id="password_confirmation" formControlName="password_confirmation" placeholder="Digite sua Senha Novamente">
+        <div class="mensagem__erro" *ngIf="formulario.get('password_confirmation')?.errors?.['required'] && formulario.get('password_confirmation')?.touched">
+          Confirmação da senha é obrigatória!
         </div>
-        <div class="buttons">
-          <button type="submit" class="botao ff-roboto" routerLink="/login">Criar conta</button>
+        <div class="mensagem__erro" *ngIf="formulario.get('password_confirmation')?.errors?.['passwordMismatch'] && formulario.get('password_confirmation')?.touched">
+          As senhas não correspondem!
         </div>
-      </form>
-    </div>
-    <div class="right-section">
-      <img src="../../../assets/images/sample_login.png" alt="Imagem de fundo">
-    </div>
+      </div>
+      <div class="buttons">
+        <button type="submit" class="botao ff-roboto" [disabled]="formulario.invalid">Criar conta</button>
+      </div>
+    </form>
   </div>
-  
+  <div class="right-section">
+    <img src="../../../assets/images/sample_login.png" alt="Imagem de fundo">
+  </div>
+</div>

@@ -53,6 +53,12 @@
   color: #ffffff;
 }
 
+.mensagem__erro {
+  color: red;
+  font-size: 14px;
+  margin-top: 1px;
+}
+
 @media (min-width: 576px) {
   .container {
       width: 540px;
