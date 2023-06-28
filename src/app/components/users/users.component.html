@@ -1,0 +1,22 @@
+<div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th class="ff-inter">Nome</th>
+          <th class="ff-inter">Função</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of listaUsers">
+          <td class="ff-roboto">{{ user.name }}</td>
+          <td class="ff-roboto">{{ user.role }}</td>
+          <td class="action-buttons">
+            <button (click)="editUserRole(user.id!)">Alternar Função</button>
+            <button (click)="deleteUser(user.id!)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
