@@ -22,30 +22,35 @@
 .botao {
   background: #2655FB;
   color: #FFFFFF;
-  max-width: 270px;
   width: 250px;
   padding: 1rem;
   margin: 0 auto;
   border: 2px solid #2655FB;
   border-radius: 10px;
-  transition: 0.5s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
 }
 
 .botao:hover {
-  border: 2px solid #1f43c4;
+  background: #1f43c4;
   color: #ffffff;
 }
 
 .botao__secundario {
   background: #4B5962;
   color: #FFFFFF;
-  max-width: 270px;
   width: 250px;
   padding: 1rem;
   margin: 0 auto;
   border: 2px solid #4B5962;
   border-radius: 10px;
   transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.botao__secundario:hover {
+  background: #404c53;
+  color: #ffffff;
 }
 
 @media (min-width: 576px) {
