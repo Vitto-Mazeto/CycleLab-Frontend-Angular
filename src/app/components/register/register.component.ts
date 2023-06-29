@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,7 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   formulario!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -41,6 +43,12 @@ export class RegisterComponent implements OnInit {
   submitForm(): void {
     if (this.formulario.valid) {
       console.log('Formulário válido');
+      this.router.navigate(['/login'])
+    } else {
+      console.log('Formulário inválido');
+      this.formulario.get('email')?.markAsTouched();
+      this.formulario.get('password')?.markAsTouched();
+      this.formulario.get('password_confirmation')?.markAsTouched();
     }
   }
 }
