@@ -25,6 +25,10 @@
           *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched">
           Senha é obrigatória!
         </div>
+        <div class="mensagem__erro"
+          *ngIf="formulario.get('senha')?.errors?.['invalidAccount']">
+          Email ou senha inválidos!
+        </div>
       </div>
       <div class="buttons">
         <button type="submit" class="botao ff-roboto">Entrar</button>
