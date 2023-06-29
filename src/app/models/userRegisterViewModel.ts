@@ -2,5 +2,5 @@ export class UserRegisterViewModel {
     email = '';
     senha = '';
     senhaConfirmacao = '';
-    IsAdmin = false
+    isAdmin = false
 }

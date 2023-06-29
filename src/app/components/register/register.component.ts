@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserRegisterViewModel } from 'src/app/models/userRegisterViewModel';
 
 @Component({
   selector: 'app-register',
@@ -8,10 +10,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  userRegister = new UserRegisterViewModel();
   formulario!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -19,22 +23,23 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.email
       ])],
-      password: ['', Validators.compose([
+      senha: ['', Validators.compose([
         Validators.required,
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,}$')
       ])],
-      password_confirmation: ['', Validators.required]
+      isAdmin: new FormControl(false), // Adiciona a propriedade isAdmin com o valor inicial como falso
+      senhaConfirmacao: ['', Validators.required]
     }, { validator: this.confirmaSenhaValidator });
   }
 
   confirmaSenhaValidator(group: FormGroup): any {
-    const senha = group.get('password')?.value;
-    const confirmaSenha = group.get('password_confirmation')?.value;
+    const senha = group.get('senha')?.value;
+    const confirmaSenha = group.get('senhaConfirmacao')?.value;
 
     if (senha === confirmaSenha) {
-      group.get('password_confirmation')?.setErrors(null);
+      group.get('senhaConfirmacao')?.setErrors(null);
     } else {
-      group.get('password_confirmation')?.setErrors({ passwordMismatch: true });
+      group.get('senhaConfirmacao')?.setErrors({ senhaMismatch: true });
     }
 
     return null;
@@ -42,13 +47,20 @@ export class RegisterComponent implements OnInit {
 
   submitForm(): void {
     if (this.formulario.valid) {
+      this.userRegister.email = this.formulario.get('email')?.value;
+      this.userRegister.senha = this.formulario.get('senha')?.value;
+      this.userRegister.senhaConfirmacao = this.formulario.get('senhaConfirmacao')?.value;
+      this.userRegister.isAdmin = this.formulario.get('isAdmin')?.value;
+
+      this.authService.register(this.userRegister).subscribe((response) => { console.log(response) });
+
       console.log('Formulário válido');
       this.router.navigate(['/login'])
     } else {
       console.log('Formulário inválido');
       this.formulario.get('email')?.markAsTouched();
-      this.formulario.get('password')?.markAsTouched();
-      this.formulario.get('password_confirmation')?.markAsTouched();
+      this.formulario.get('senha')?.markAsTouched();
+      this.formulario.get('senhaConfirmacao')?.markAsTouched();
     }
   }
 }
