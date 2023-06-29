@@ -12,6 +12,7 @@ import { UsersComponent } from './components/users/users.component';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { AmostrasComponent } from './components/amostras/amostras.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthInterceptor } from './services/auth.interceptor';
     LoginComponent,
     RegisterComponent,
     HomepageComponent,
-    UsersComponent
+    UsersComponent,
+    AmostrasComponent
   ],
   imports: [
     BrowserModule,

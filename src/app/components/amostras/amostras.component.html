@@ -1,0 +1,24 @@
+<div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th class="ff-inter">ID</th>
+          <th class="ff-inter">Nome da amostra</th>
+          <th class="ff-inter">Número do registro</th>
+          <th class="ff-inter"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let amostra of listaAmostras">
+          <td class="ff-roboto"><a [routerLink]="['/pagina', amostra.id]">{{ amostra.id }}</a></td>
+          <td class="ff-roboto">{{ amostra.nome }}</td>
+          <td class="ff-roboto">{{ amostra.numeroDeRegistro }}</td>
+          <td class="action-buttons">
+            <!-- <button (click)="editAmostra(amostra)">Editar</button> -->
+            <button (click)="deleteAmostra(amostra)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
