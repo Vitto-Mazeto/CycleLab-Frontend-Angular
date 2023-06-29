@@ -4,20 +4,20 @@
   </div>
   <nav class="middle-section">
     <ul>
-      <li><a class="ff-inter" routerLink="/">Home</a></li>
       <!-- Aparece não Logado -->
       <li *ngIf="!isLoggedIn"><a class="ff-inter" routerLink="/sobre">Sobre nós</a></li>
       <li *ngIf="!isLoggedIn"><a class="ff-inter" routerLink="/missao">Missão</a></li>
       <!-- Aparece Logado -->
+      <li *ngIf="isLoggedIn"><a class="ff-inter" routerLink="/homepage">Home</a></li>
       <li *ngIf="isLoggedIn"><a class="ff-inter" routerLink="/amostras">Amostras</a></li>
-      <li *ngIf="isLoggedIn"><a class="ff-inter" routerLink="/usuarios">Usuários</a></li>
+      <li *ngIf="isLoggedIn"><a class="ff-inter" routerLink="/users">Usuários</a></li>
     </ul>
   </nav>
   <div class="right-section">
     <!-- Aparece não Logado -->
-    <a class="ff-inter" *ngIf="!isLoggedIn" routerLink="/cadastro">Cadastre-se</a>
+    <a class="ff-inter" *ngIf="!isLoggedIn" routerLink="/register">Cadastre-se</a>
     <!-- Aparece Logado -->
     <a class="ff-inter" *ngIf="isLoggedIn" routerLink="/profile">Perfil</a>
-    <a class="ff-inter" *ngIf="isLoggedIn" routerLink="/logout">Sair</a>
+    <a class="ff-inter logout-link" *ngIf="isLoggedIn" (click)="logout()">Sair</a>
   </div>
 </header>

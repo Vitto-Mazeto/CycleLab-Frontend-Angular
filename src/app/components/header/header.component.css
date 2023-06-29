@@ -40,4 +40,8 @@ header {
   .right-section a:first-child {
     margin-left: 0;
   }
+
+  .logout-link {
+    cursor: pointer;
+  }
   

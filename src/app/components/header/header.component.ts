@@ -12,9 +12,16 @@ export class HeaderComponent {
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // Verifica se a rota atual é a de login
-        this.isLoggedIn = (event.url !== '/login');
+        // Verifica se a rota atual é a de login / cadastro
+        this.isLoggedIn = (event.url !== '/login' && event.url !== '/register');
       }
     });
+  }
+
+  logout(): void {
+    // Remover token do localStorage
+    localStorage.removeItem('token');
+    // Redirecionar para a página de login
+    this.router.navigate(['/login']);
   }
 }
