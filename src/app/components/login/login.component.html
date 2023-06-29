@@ -19,10 +19,10 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="password" class="ff-roboto">Senha:</label>
-        <input type="password" id="password" name="password" formControlName="password" placeholder="Digite sua Senha">
+        <label for="senha" class="ff-roboto">Senha:</label>
+        <input type="senha" id="senha" name="senha" formControlName="senha" placeholder="Digite sua Senha">
         <div class="mensagem__erro"
-          *ngIf="formulario.get('password')?.errors?.['required'] && formulario.get('password')?.touched">
+          *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched">
           Senha é obrigatória!
         </div>
       </div>
