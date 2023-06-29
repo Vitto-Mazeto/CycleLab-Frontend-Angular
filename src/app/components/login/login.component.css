@@ -15,7 +15,7 @@
   
   .logo-section {
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
   }
   
   .logo-section h1 {
@@ -23,10 +23,10 @@
   }
   
   .logo-section img {
-    height: 7em; 
-    position: absolute; 
-    top: -1em; 
-    left: 0.7em; 
+    height: 7em;
+    position: absolute;
+    top: -1em;
+    left: 0.7em;
   }
   
   .right-section {

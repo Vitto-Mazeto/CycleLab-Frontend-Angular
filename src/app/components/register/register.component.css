@@ -20,6 +20,7 @@
   
   .logo-section h1 {
     font-size: 24px;
+    margin-left: 38%;
   }
   
   .logo-section img {
@@ -40,6 +41,13 @@
   }
   
   .form-group {
+    margin-bottom: 15px;
+  }
+
+  .admin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-bottom: 15px;
   }
   
