@@ -36,10 +36,8 @@ export class LoginComponent implements OnInit {
           const token = response.token;
 
           localStorage.setItem('token', token);
-          console.log('authToken:', token);
 
-          // Restante do código após obter o token
-          //this.router.navigate(['/homepage']);
+          this.router.navigate(['/homepage']);
       }
     });
     } else {

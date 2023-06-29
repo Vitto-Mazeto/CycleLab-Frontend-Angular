@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserRegisterViewModel } from 'src/app/models/userRegisterViewModel';
+import { UserLoginViewModel } from 'src/app/models/userLoginViewModel';
 
 @Component({
   selector: 'app-register',
@@ -51,13 +52,24 @@ export class RegisterComponent implements OnInit {
       this.userRegister.senha = this.formulario.get('senha')?.value;
       this.userRegister.senhaConfirmacao = this.formulario.get('senhaConfirmacao')?.value;
       this.userRegister.isAdmin = this.formulario.get('isAdmin')?.value;
-
-      this.authService.register(this.userRegister).subscribe((response) => { console.log(response) });
-
-      console.log('Formulário válido');
-      this.router.navigate(['/login'])
+  
+      this.authService.register(this.userRegister).subscribe((response) => { 
+        if (response.sucesso) {
+          let userLogin = new UserLoginViewModel();
+          userLogin.email = this.userRegister.email;
+          userLogin.senha = this.userRegister.senha;
+          this.authService.login(userLogin).subscribe((response) => {
+            if (response.sucesso && response.token) {
+              const token = response.token;
+  
+              localStorage.setItem('token', token);
+  
+              this.router.navigate(['/homepage']);
+            }
+          });
+        }
+      });
     } else {
-      console.log('Formulário inválido');
       this.formulario.get('email')?.markAsTouched();
       this.formulario.get('senha')?.markAsTouched();
       this.formulario.get('senhaConfirmacao')?.markAsTouched();
