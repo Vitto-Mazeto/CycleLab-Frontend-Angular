@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private readonly API = 'http://localhost:3000/pensamentos' //Mudar depois para o certo
+  private readonly API = 'https://localhost:7237/User/usuarios' 
 
   constructor(private http: HttpClient) { }
 
