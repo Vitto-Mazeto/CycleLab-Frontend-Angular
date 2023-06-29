@@ -20,11 +20,13 @@ export class UsersComponent implements OnInit {
     })
   }
 
-  editUserRole(userId: number): void {
-    // Lógica para editar o usuário com o ID fornecido
+  editUserRole(userLogin: string): void {
+    // O role pode ser ou ADMIN ou USER, e quando clica no botão inverte
+    this.service.editUserRole(userLogin).subscribe((response) => {console.log(response)});
   }
   
-  deleteUser(userId: number): void {
-    // Lógica para excluir o usuário com o ID fornecido
+  deleteUser(userLogin: string): void {
+    // A linha deve ser deletada
+    this.service.excluir(userLogin).subscribe((response) => {console.log(response)});
   }
 }

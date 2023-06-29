@@ -12,8 +12,8 @@
           <td class="ff-roboto">{{ user.login }}</td>
           <td class="ff-roboto">{{ user.roles }}</td>
           <td class="action-buttons">
-            <button (click)="editUserRole(user.id!)">Alternar Função</button>
-            <button (click)="deleteUser(user.id!)">Excluir</button>
+            <button (click)="editUserRole(user.login)">Alternar Função</button>
+            <button (click)="deleteUser(user.login)">Excluir</button>
           </td>
         </tr>
       </tbody>
