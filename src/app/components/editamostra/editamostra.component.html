@@ -25,6 +25,10 @@
           *ngIf="formulario.get('numeroDeRegistro')?.errors?.['required'] && formulario.get('numeroDeRegistro')?.touched">
           Um número de registro é obrigatório!
         </div>
+        <div class="mensagem__erro"
+          *ngIf="formulario.get('numeroDeRegistro')?.errors?.['pattern'] && formulario.get('numeroDeRegistro')?.touched">
+          Apenas números são permitidos!
+        </div>
       </div>
       <div class="buttons">
         <button type="submit" class="botao ff-roboto">Editar Amostra</button>

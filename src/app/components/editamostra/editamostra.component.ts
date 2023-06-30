@@ -25,25 +25,29 @@ export class EditamostraComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
-    const amostraId: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    if (amostraId) {
-      this.service.getAmostra(amostraId).subscribe(
-        (amostra) => {
-          this.amostra = amostra;
-          this.fillFormWithAmostraData();
-        },
-        (error) => {
-          console.error('Erro ao obter a amostra:', error);
-        }
-      );
-    }
+    this.loadAmostra();
   }
 
   initializeForm(): void {
     this.formulario = this.formBuilder.group({
       nome: ['', Validators.required],
-      numeroDeRegistro: ['', Validators.required]
+      numeroDeRegistro: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
     });
+  }
+
+  loadAmostra(): void {
+    const amostraId: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    if (amostraId) {
+      this.service.getAmostra(amostraId).subscribe({
+        next: (amostra) => {
+          this.amostra = amostra;
+          this.fillFormWithAmostraData();
+        },
+        error: (error) => {
+          console.error('Erro ao obter a amostra:', error);
+        }
+      });
+    }
   }
 
   fillFormWithAmostraData(): void {
@@ -55,23 +59,33 @@ export class EditamostraComponent implements OnInit {
 
   submitForm(): void {
     if (this.formulario.valid) {
-      const formValues = this.formulario.value;
-      this.amostra.nome = formValues.nome;
-      this.amostra.numeroDeRegistro = formValues.numeroDeRegistro;
-      this.service.editAmostra(this.amostra).subscribe({
-        next: (response) => {
-          // Lógica a ser executada quando a amostra for adicionada com sucesso
-          console.log('Amostra editada com sucesso!');
-          this.router.navigate(['/amostras']); // Redireciona para a página de amostras
-        },
-        error: (error) => {
-          // Lógica a ser executada em caso de erro
-          console.error('Erro ao editar amostra:', error);
-        }
-      });
+      this.updateAmostraData();
     } else {
       console.log('Formulário inválido');
       this.formulario.markAllAsTouched(); // Marca todos os campos como tocados para exibir os erros de validação
     }
+  }
+
+  updateAmostraData(): void {
+    const formValues = this.formulario.value;
+    this.amostra.nome = formValues.nome;
+    this.amostra.numeroDeRegistro = formValues.numeroDeRegistro;
+    this.service.editAmostra(this.amostra).subscribe({
+      next: (response) => {
+        this.handleEditSuccess();
+      },
+      error: (error) => {
+        this.handleEditError(error);
+      }
+    });
+  }
+
+  handleEditSuccess(): void {
+    console.log('Amostra editada com sucesso!');
+    this.router.navigate(['/amostras']); // Redireciona para a página de amostras
+  }
+
+  handleEditError(error: any): void {
+    console.log('Erro ao editar amostra:', error);
   }
 }
