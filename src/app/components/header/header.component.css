@@ -10,8 +10,14 @@ header {
   .left-section h1 {
     font-size: 18px;
     color: #FFF;
-    margin-left: 1em;
     font-weight: 400;
+  }
+
+  .left-section img {
+    height: 3em; 
+    position: absolute; 
+    top: 0.3em; 
+    left: 0.7em; 
   }
   
   .middle-section ul {
