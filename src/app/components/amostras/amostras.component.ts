@@ -20,9 +20,7 @@ export class AmostrasComponent implements OnInit {
   }
 
   // editAmostra(amostra: Amostra): void {
-  //   this.service.editAmostra(amostra.id!).subscribe((response) => {
-  //     console.log(response);
-  //     window.location.reload();
+  //   
   //   });
   // }
 

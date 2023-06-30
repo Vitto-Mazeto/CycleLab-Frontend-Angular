@@ -6,6 +6,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { UsersComponent } from './components/users/users.component';
 import { AmostrasComponent } from './components/amostras/amostras.component';
 import { AddamostraComponent } from './components/addamostra/addamostra.component';
+import { EditamostraComponent } from './components/editamostra/editamostra.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'addamostra',
     component: AddamostraComponent
+  },
+  {
+    path: 'editamostra/:id',
+    component: EditamostraComponent
   }
 ];
 

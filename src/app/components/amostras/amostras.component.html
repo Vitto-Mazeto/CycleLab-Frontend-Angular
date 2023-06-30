@@ -1,5 +1,5 @@
 <div class="button-container">
-  <button class="add-amostra-button" [routerLink]="['/addamostra']">Adicionar Amostra</button>
+  <button class="add-amostra-button ff-roboto" [routerLink]="['/addamostra']">Adicionar Amostra</button>
 </div>
 
 <div class="table-container">
@@ -18,7 +18,7 @@
         <td class="ff-roboto">{{ amostra.nome }}</td>
         <td class="ff-roboto">{{ amostra.numeroDeRegistro }}</td>
         <td class="action-buttons">
-          <!-- <button (click)="editAmostra(amostra)">Editar</button> -->
+          <button [routerLink]="'/editamostra/' + amostra.id">Editar</button>
           <button (click)="deleteAmostra(amostra)">Excluir</button>
         </td>
       </tr>

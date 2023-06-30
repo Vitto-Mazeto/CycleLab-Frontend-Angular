@@ -1,4 +1,4 @@
-.add-container {
+.login-container {
     display: flex;
     height: 86vh;
   }
@@ -33,7 +33,7 @@
     flex: 1;
   }
   
-  .right-section img {
+  .left-section img {
     height: 100%;
     width: 100%;
     object-fit: cover;

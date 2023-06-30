@@ -1,0 +1,36 @@
+<div class="login-container">
+    <div class="left-section">
+      <img src="../../../assets/images/instruments_addamostra.png" alt="Imagem de fundo">
+    </div>
+    <div class="right-section">
+      <div class="logo-section">
+        <h1 class="ff-roboto">Editar Amostra</h1>
+      </div>
+      <form [formGroup]="formulario" (ngSubmit)="submitForm()">
+          <div class="form-group" style="display: none;">
+            <label for="id" class="ff-roboto"></label>
+            <input type="text" id="id" name="id" formControlName="id">
+          </div>
+          <div class="form-group">
+              <label for="nome" class="ff-roboto">Nome da Amostra:</label>
+              <input type="text" id="nome" name="nome" formControlName="nome" placeholder="Digite o número de registro">
+              <div class="mensagem__erro"
+              *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched">
+              Um nome é obrigatório!
+            </div>
+            <div class="form-group">
+                <label for="numeroDeRegistro" class="ff-roboto">Número de Registro:</label>
+                <input type="text" id="numeroDeRegistro" name="numeroDeRegistro" formControlName="numeroDeRegistro" placeholder="Digite o número de registro">
+                <div class="mensagem__erro"
+                *ngIf="formulario.get('numeroDeRegistro')?.errors?.['required'] && formulario.get('numeroDeRegistro')?.touched">
+                Um número de registro é obrigatório!
+            </div>
+        </div>
+        </div>
+        <div class="buttons">
+          <button type="submit" class="botao ff-roboto">Editar Amostra</button>
+          <button type="button" class="botao__secundario ff-roboto" routerLink="/amostras">Voltar</button>
+        </div>
+      </form>
+    </div>
+  </div>

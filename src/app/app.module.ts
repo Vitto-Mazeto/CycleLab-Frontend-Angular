@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AmostrasComponent } from './components/amostras/amostras.component';
 import { AddamostraComponent } from './components/addamostra/addamostra.component';
+import { EditamostraComponent } from './components/editamostra/editamostra.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddamostraComponent } from './components/addamostra/addamostra.componen
     HomepageComponent,
     UsersComponent,
     AmostrasComponent,
-    AddamostraComponent
+    AddamostraComponent,
+    EditamostraComponent
   ],
   imports: [
     BrowserModule,
