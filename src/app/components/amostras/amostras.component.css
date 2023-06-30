@@ -5,9 +5,10 @@
 }
 
 .add-amostra-button {
+  margin-top: 5px;
   padding: 8px 16px;
   font-size: 16px;
-  border: 1px;
+  border: none;
   border-radius: 4px;
   background-color: #2655FB;
   color: #fff;
@@ -19,66 +20,7 @@
   background-color: #0056b3;
 }
 
-
-.table-container {
-    width: 100%;
-    overflow-x: auto;
-    height: 89vh;
-  }
-
 .clickable-row {
   cursor: pointer;
 }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-  }
-  
-  thead {
-    background-color: #f2f2f2;
-  }
-  
-  th,
-  td {
-    padding: 12px;
-    text-align: left;
-  }
-  
-  th {
-    font-weight: bold;
-  }
-  
-  /* Lógica para fazer a cor mudar em cada linha */
-  tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  tbody tr:hover {
-    background-color: #e6e6e6;
-  }
-  
-  .action-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .action-buttons button {
-    padding: 6px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-  
-  .action-buttons button:hover {
-    color: #007bff;
-  }
-  
-  .action-buttons button i {
-    font-size: 18px;
-  }
-  
+
