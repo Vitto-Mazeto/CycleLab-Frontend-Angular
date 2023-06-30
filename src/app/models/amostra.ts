@@ -3,5 +3,5 @@ export interface Amostra {
     id?: number;
     nome: string;
     numeroDeRegistro: number;
-    exames: Exame[];
+    exames?: Exame[];
   }

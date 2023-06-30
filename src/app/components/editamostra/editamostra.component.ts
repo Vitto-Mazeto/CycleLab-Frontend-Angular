@@ -13,7 +13,6 @@ export class EditamostraComponent implements OnInit {
   amostra: Amostra = {
     nome: '',
     numeroDeRegistro: 0,
-    exames: []
   };
   formulario!: FormGroup;
 
