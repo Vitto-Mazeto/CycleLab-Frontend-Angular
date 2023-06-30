@@ -15,9 +15,9 @@ export class AmostraService {
     return this.http.get<Amostra[]>(this.API);
   }
 
-  // addAmostra(amostra: Amostra): Observable<Amostra> {
-  //   return this.http.post<Amostra>(this.API, amostra); // Fazer lógica para adicionar a amostra
-  // }
+  addAmostra(amostra: Amostra): Observable<Amostra> {
+    return this.http.post<Amostra>(this.API, amostra); // Fazer lógica para adicionar a amostra
+  }
 
   // editAmostra(amostraId: number): Observable<Amostra> {
   //   const url = `${this.API}/${amostraId}/editar`; // Fazer lógica para editar a amostra

@@ -53,8 +53,7 @@ export class LoginComponent implements OnInit {
       });
     } else {
       console.log('Formulário inválido');
-      this.formulario.get('email')?.markAsTouched();
-      this.formulario.get('senha')?.markAsTouched();
+      this.formulario.markAllAsTouched();
     }
   }
 

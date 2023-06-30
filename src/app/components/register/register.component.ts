@@ -70,9 +70,7 @@ export class RegisterComponent implements OnInit {
         }
       });
     } else {
-      this.formulario.get('email')?.markAsTouched();
-      this.formulario.get('senha')?.markAsTouched();
-      this.formulario.get('senhaConfirmacao')?.markAsTouched();
+      this.formulario.markAllAsTouched();
     }
   }
 }

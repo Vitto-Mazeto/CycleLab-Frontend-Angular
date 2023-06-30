@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { UsersComponent } from './components/users/users.component';
 import { AmostrasComponent } from './components/amostras/amostras.component';
+import { AddamostraComponent } from './components/addamostra/addamostra.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'amostras',
     component: AmostrasComponent
+  },
+  {
+    path: 'addamostra',
+    component: AddamostraComponent
   }
 ];
 

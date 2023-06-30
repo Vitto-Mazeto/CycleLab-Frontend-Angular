@@ -13,6 +13,7 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AmostrasComponent } from './components/amostras/amostras.component';
+import { AddamostraComponent } from './components/addamostra/addamostra.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AmostrasComponent } from './components/amostras/amostras.component';
     RegisterComponent,
     HomepageComponent,
     UsersComponent,
-    AmostrasComponent
+    AmostrasComponent,
+    AddamostraComponent
   ],
   imports: [
     BrowserModule,
