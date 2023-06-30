@@ -1,7 +1,7 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Exame } from 'src/app/models/exame';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Exame } from 'src/app/models/exame';
 import { ExameService } from 'src/app/services/exame.service';
 
 @Component({
@@ -16,22 +16,30 @@ export class ViewamostraComponent implements OnInit {
     amostraId: 0
   };
   formulario!: FormGroup;
-
   listaExames: Exame[] = [];
 
-  constructor(private service: ExameService,
+  constructor(
+    private service: ExameService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-    const amostraId: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    this.exame.amostraId = amostraId;
-    this.loadExames(amostraId);
+    this.initializeForm();
+    this.loadAmostraAndExames();
+  }
 
+  initializeForm(): void {
     this.formulario = this.formBuilder.group({
       nome: ['', Validators.required],
       resultadoDoExame: ['', Validators.required]
     });
+  }
+
+  loadAmostraAndExames(): void {
+    const amostraId: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    this.exame.amostraId = amostraId;
+    this.loadExames(amostraId);
   }
 
   loadExames(amostraId: number): void {
@@ -39,30 +47,45 @@ export class ViewamostraComponent implements OnInit {
       this.listaExames = listaExames;
     });
   }
-  
+
   deleteExame(exame: Exame): void {
-    this.service.deleteExame(exame.id!).subscribe((exame) => {
+    this.service.deleteExame(exame.id!).subscribe(() => {
       this.loadExames(this.exame.amostraId);
     });
   }
 
   submitForm(): void {
     if (this.formulario.valid) {
-      this.exame.nome = this.formulario.get('nome')?.value;
-      this.exame.resultado = this.formulario.get('resultadoDoExame')?.value;
+      this.setExameValues();
       this.service.addExame(this.exame).subscribe({
-        next: (response) => {
-          console.log('Exame adicionado com sucesso!');
-          this.loadExames(this.exame.amostraId);
+        next: () => {
+          this.handleSuccess();
         },
         error: (error) => {
-          console.error('Erro ao adicionar exame:', error);
+          this.handleError(error);
         }
       });
     } else {
-      console.log('Formulário inválido');
-      this.formulario.markAllAsTouched();
+      this.handleInvalidForm();
     }
   }
 
+  setExameValues(): void {
+    this.exame.nome = this.formulario.get('nome')?.value;
+    this.exame.resultado = this.formulario.get('resultadoDoExame')?.value;
+  }
+
+  handleSuccess(): void {
+    console.log('Exame adicionado com sucesso!');
+    this.loadExames(this.exame.amostraId);
+  }
+
+  handleError(error: any): void {
+    console.error('Erro ao adicionar exame:', error);
+  }
+
+  handleInvalidForm(): void {
+    console.log('Formulário inválido');
+    this.formulario.markAllAsTouched();
+  }
 }
