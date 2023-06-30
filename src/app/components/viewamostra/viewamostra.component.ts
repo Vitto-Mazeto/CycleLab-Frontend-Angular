@@ -26,19 +26,23 @@ export class ViewamostraComponent implements OnInit {
   ngOnInit(): void {
     const amostraId: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.exame.amostraId = amostraId;
-    this.service.list(amostraId).subscribe((listaExames) => {
-      this.listaExames = listaExames
-    })
+    this.loadExames(amostraId);
 
     this.formulario = this.formBuilder.group({
       nome: ['', Validators.required],
       resultadoDoExame: ['', Validators.required]
     });
   }
+
+  loadExames(amostraId: number): void {
+    this.service.list(amostraId).subscribe((listaExames) => {
+      this.listaExames = listaExames;
+    });
+  }
   
   deleteExame(exame: Exame): void {
     this.service.deleteExame(exame.id!).subscribe((exame) => {
-      window.location.reload();
+      this.loadExames(this.exame.amostraId);
     });
   }
 
@@ -48,17 +52,16 @@ export class ViewamostraComponent implements OnInit {
       this.exame.resultado = this.formulario.get('resultadoDoExame')?.value;
       this.service.addExame(this.exame).subscribe({
         next: (response) => {
-          // Lógica a ser executada quando a exame for adicionada com sucesso
-          console.log('exame adicionada com sucesso!');
+          console.log('Exame adicionado com sucesso!');
+          this.loadExames(this.exame.amostraId);
         },
         error: (error) => {
-          // Lógica a ser executada em caso de erro
           console.error('Erro ao adicionar exame:', error);
         }
       });
     } else {
       console.log('Formulário inválido');
-      this.formulario.markAllAsTouched(); // Marca todos os campos como tocados para exibir os erros de validação
+      this.formulario.markAllAsTouched();
     }
   }
 

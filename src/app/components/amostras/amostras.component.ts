@@ -14,6 +14,10 @@ export class AmostrasComponent implements OnInit {
   constructor(private service: AmostraService, private router: Router) { }
 
   ngOnInit(): void {
+    this.loadAmostras();
+  }
+
+  loadAmostras(): void {
     this.service.list().subscribe((listaAmostras) => {
       this.listaAmostras = listaAmostras;
     });
@@ -22,7 +26,7 @@ export class AmostrasComponent implements OnInit {
   deleteAmostra(amostra: Amostra): void {
     this.service.deleteAmostra(amostra.id!).subscribe((response) => {
       console.log(response);
-      window.location.reload();
+      this.loadAmostras();
     });
   }
 
@@ -33,5 +37,4 @@ export class AmostrasComponent implements OnInit {
   stopPropagation(event: Event): void {
     event.stopPropagation();
   }
-
 }
