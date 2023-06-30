@@ -19,11 +19,6 @@ export class AmostrasComponent implements OnInit {
     });
   }
 
-  // editAmostra(amostra: Amostra): void {
-  //   
-  //   });
-  // }
-
   deleteAmostra(amostra: Amostra): void {
     this.service.deleteAmostra(amostra.id!).subscribe((response) => {
       console.log(response);
@@ -31,7 +26,12 @@ export class AmostrasComponent implements OnInit {
     });
   }
 
-  // adicionarAmostra(): void {
-  //   // Lógica para adicionar uma nova amostra
-  // }
+  redirectToPage(id: number): void {
+    this.router.navigate(['/viewamostra', id]);
+  }
+  
+  stopPropagation(event: Event): void {
+    event.stopPropagation();
+  }
+
 }

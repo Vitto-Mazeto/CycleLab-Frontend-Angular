@@ -15,6 +15,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { AmostrasComponent } from './components/amostras/amostras.component';
 import { AddamostraComponent } from './components/addamostra/addamostra.component';
 import { EditamostraComponent } from './components/editamostra/editamostra.component';
+import { ViewamostraComponent } from './components/viewamostra/viewamostra.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EditamostraComponent } from './components/editamostra/editamostra.compo
     UsersComponent,
     AmostrasComponent,
     AddamostraComponent,
-    EditamostraComponent
+    EditamostraComponent,
+    ViewamostraComponent
   ],
   imports: [
     BrowserModule,

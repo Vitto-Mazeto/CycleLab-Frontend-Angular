@@ -1,5 +1,5 @@
 export interface Exame {
-    id: number;
+    id?: number;
     nome: string;
     resultado: string;
     amostraId: number;

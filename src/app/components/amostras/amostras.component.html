@@ -13,15 +13,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let amostra of listaAmostras">
-        <td class="ff-roboto"><a [routerLink]="['/pagina', amostra.id]">{{ amostra.id }}</a></td>
-        <td class="ff-roboto">{{ amostra.nome }}</td>
-        <td class="ff-roboto">{{ amostra.numeroDeRegistro }}</td>
-        <td class="action-buttons">
-          <button [routerLink]="'/editamostra/' + amostra.id">Editar</button>
-          <button (click)="deleteAmostra(amostra)">Excluir</button>
-        </td>
-      </tr>
+      <ng-container *ngFor="let amostra of listaAmostras">
+        <tr class="clickable-row" (click)="redirectToPage(amostra.id!)">
+          <td class="ff-roboto">{{ amostra.id }}</td>
+          <td class="ff-roboto">{{ amostra.nome }}</td>
+          <td class="ff-roboto">{{ amostra.numeroDeRegistro }}</td>
+          <td class="action-buttons">
+            <button [routerLink]="'/editamostra/' + amostra.id" (click)="stopPropagation($event)">Editar</button>
+            <button (click)="deleteAmostra(amostra); stopPropagation($event)">Excluir</button>
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
 </div>

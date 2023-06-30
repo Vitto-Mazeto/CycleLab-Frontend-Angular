@@ -1,0 +1,51 @@
+<div class="add-container">
+    <div class="left-section">
+        <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th class="ff-inter">Nome do Exame</th>
+                  <th class="ff-inter">Resultado</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let exame of listaExames">
+                  <td class="ff-roboto">{{ exame.nome }}</td>
+                  <td class="ff-roboto">{{ exame.resultado }}</td>
+                  <td class="action-buttons">
+                    <button (click)="deleteExame(exame)">Excluir</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+    <div class="right-section">
+      <div class="logo-section">
+        <h1 class="ff-roboto">Adicionar Exame</h1>
+      </div>
+      <form [formGroup]="formulario" (ngSubmit)="submitForm()">
+        <div class="form-group">
+          <label for="nome" class="ff-roboto">Nome do Exame:</label>
+          <input type="nome" id="nome" name="nome" formControlName="nome" placeholder="Digite o nome do exame">
+          <div class="mensagem__erro"
+            *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched">
+            O nome do exame é obrigatório!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="resultadoDoExame" class="ff-roboto">Resultado do Exame:</label>
+          <input type="resultadoDoExame" id="resultadoDoExame" name="resultadoDoExame" formControlName="resultadoDoExame" placeholder="Digite o resultado do exame com unidade de medida">
+          <div class="mensagem__erro"
+            *ngIf="formulario.get('resultadoDoExame')?.errors?.['required'] && formulario.get('resultadoDoExame')?.touched">
+            O resultado do exame é obrigatório!
+          </div>
+        </div>
+        <div class="buttons">
+          <button type="submit" class="botao ff-roboto">Adicionar Exame</button>
+          <button type="button" class="botao__secundario ff-roboto" routerLink="/amostras">Voltar</button>
+        </div>
+      </form>
+    </div>
+  </div>

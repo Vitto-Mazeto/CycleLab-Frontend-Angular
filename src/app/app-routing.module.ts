@@ -7,6 +7,7 @@ import { UsersComponent } from './components/users/users.component';
 import { AmostrasComponent } from './components/amostras/amostras.component';
 import { AddamostraComponent } from './components/addamostra/addamostra.component';
 import { EditamostraComponent } from './components/editamostra/editamostra.component';
+import { ViewamostraComponent } from './components/viewamostra/viewamostra.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'editamostra/:id',
     component: EditamostraComponent
+  },
+  {
+    path: 'viewamostra/:id',
+    component: ViewamostraComponent
   }
 ];
 
