@@ -4,7 +4,6 @@
   }
 
   .table-container {
-    width: 100%;
     overflow-x: auto;
     height: 89vh;
   }
@@ -60,10 +59,15 @@
   .action-buttons button i {
     font-size: 18px;
   }
+
+  .left-section {
+    width: 50%;
+  }
   
   
   .right-section {
     flex: 1;
+    width: 50%;
     padding: 20px;
     background-color: #f2f2f2;
     display: flex;
