@@ -17,7 +17,7 @@
       </div>
       <div class="form-group">
         <label for="senha" class="ff-roboto">Senha:</label>
-        <input type="senha" id="senha" formControlName="senha" placeholder="Digite sua Senha">
+        <input type="password" id="senha" formControlName="senha" placeholder="Digite sua Senha">
         <div class="mensagem__erro" *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched">
           Senha é obrigatória!
         </div>
@@ -27,7 +27,7 @@
       </div>
       <div class="form-group">
         <label for="senhaConfirmacao" class="ff-roboto">Confirmação da Senha:</label>
-        <input type="senha" id="senhaConfirmacao" formControlName="senhaConfirmacao" placeholder="Digite sua Senha Novamente">
+        <input type="password" id="senhaConfirmacao" formControlName="senhaConfirmacao" placeholder="Digite sua Senha Novamente">
         <div class="mensagem__erro" *ngIf="formulario.get('senhaConfirmacao')?.errors?.['required'] && formulario.get('senhaConfirmacao')?.touched">
           Confirmação da senha é obrigatória!
         </div>
