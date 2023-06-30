@@ -1,8 +1,8 @@
-import { Amostra } from './../../models/amostra';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AmostraService } from 'src/app/services/amostra.service';
+import { Amostra } from './../../models/amostra';
 
 @Component({
   selector: 'app-editamostra',
@@ -17,37 +17,48 @@ export class EditamostraComponent implements OnInit {
   };
   formulario!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private service: AmostraService) { }
+    private route: ActivatedRoute,
+    private service: AmostraService
+  ) { }
 
-    ngOnInit(): void {
-      const amostraId = this.activatedRoute.snapshot.paramMap.get('id');
-      if (amostraId) {
-        const amostraIdNumber = parseInt(amostraId, 10); // Converter para número inteiro
-        this.service.getAmostra(amostraIdNumber).subscribe((amostra) => {
+  ngOnInit(): void {
+    this.initializeForm();
+    const amostraId: number = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    if (amostraId) {
+      this.service.getAmostra(amostraId).subscribe(
+        (amostra) => {
           this.amostra = amostra;
-          console.log(this.amostra);
-          console.log(this.amostra.nome);
-          this.formulario = this.formBuilder.group({
-            nome: [this.amostra.nome, Validators.required],
-            numeroDeRegistro: [this.amostra.numeroDeRegistro, Validators.required]
-          });
-        });
-      } else {
-        this.formulario = this.formBuilder.group({
-          nome: ['', Validators.required],
-          numeroDeRegistro: ['', Validators.required]
-        });
-      }
+          this.fillFormWithAmostraData();
+        },
+        (error) => {
+          console.error('Erro ao obter a amostra:', error);
+        }
+      );
     }
-    
+  }
+
+  initializeForm(): void {
+    this.formulario = this.formBuilder.group({
+      nome: ['', Validators.required],
+      numeroDeRegistro: ['', Validators.required]
+    });
+  }
+
+  fillFormWithAmostraData(): void {
+    this.formulario.patchValue({
+      nome: this.amostra.nome,
+      numeroDeRegistro: this.amostra.numeroDeRegistro
+    });
+  }
 
   submitForm(): void {
     if (this.formulario.valid) {
-      this.amostra.nome = this.formulario.get('nome')?.value;
-      this.amostra.numeroDeRegistro = this.formulario.get('numeroDeRegistro')?.value;
+      const formValues = this.formulario.value;
+      this.amostra.nome = formValues.nome;
+      this.amostra.numeroDeRegistro = formValues.numeroDeRegistro;
       this.service.editAmostra(this.amostra).subscribe({
         next: (response) => {
           // Lógica a ser executada quando a amostra for adicionada com sucesso
