@@ -16,6 +16,7 @@ import { AmostrasComponent } from './components/amostras/amostras.component';
 import { AddamostraComponent } from './components/addamostra/addamostra.component';
 import { EditamostraComponent } from './components/editamostra/editamostra.component';
 import { ViewamostraComponent } from './components/viewamostra/viewamostra.component';
+import { FakechatbotComponent } from './components/fakechatbot/fakechatbot.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ViewamostraComponent } from './components/viewamostra/viewamostra.compo
     AmostrasComponent,
     AddamostraComponent,
     EditamostraComponent,
-    ViewamostraComponent
+    ViewamostraComponent,
+    FakechatbotComponent
   ],
   imports: [
     BrowserModule,

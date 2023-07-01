@@ -1,0 +1,19 @@
+<button class="chatbot-button" (click)="toggleChat()">
+    <img src="../../../assets/images/chatbot.png" alt="Chatbot">
+  </button>
+  <div class="tooltip ff-roboto" [hidden]="!untouched">Como posso ajudar?</div>
+  
+  <div class="chat-window" [hidden]="!showChat">
+    <div class="message ff-roboto" *ngIf="!response">Olá! Como posso ajudar?</div>
+    <div class="response ff-roboto" *ngIf="response">{{ response }}</div>
+  
+    <div class="options" *ngIf="!response">
+      <button class="option ff-roboto" (click)="sendMessage('1')">O que é Cycle Lab?</button>
+      <button class="option ff-roboto" (click)="sendMessage('2')">Como navegar?</button>
+      <button class="option ff-roboto" (click)="sendMessage('3')">Como falar?</button>
+      <button class="option ff-roboto" (click)="sendMessage('4')">Documentação</button>
+    </div>
+  
+    <button class="option ff-roboto" *ngIf="response" (click)="resetChat()">Voltar</button>
+  </div>
+  
