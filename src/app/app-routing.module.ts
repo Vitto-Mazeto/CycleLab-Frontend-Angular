@@ -1,3 +1,4 @@
+import { authGuard } from './services/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -25,28 +26,35 @@ const routes: Routes = [
   },
   {
     path: 'homepage',
-    component: HomepageComponent
+    component: HomepageComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'users',
-    component: UsersComponent
+    component: UsersComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'amostras',
-    component: AmostrasComponent
+    component: AmostrasComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'addamostra',
-    component: AddamostraComponent
+    component: AddamostraComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'editamostra/:id',
-    component: EditamostraComponent
+    component: EditamostraComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'viewamostra/:id',
-    component: ViewamostraComponent
-  }
+    component: ViewamostraComponent,
+    canActivate: [authGuard]
+  },
+  { path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({
