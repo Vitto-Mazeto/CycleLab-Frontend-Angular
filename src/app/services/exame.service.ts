@@ -16,11 +16,11 @@ export class ExameService {
   }
 
   addExame(exame: Exame): Observable<Exame> {
-    return this.http.post<Exame>(this.API, exame); // Lógica para adicionar o exame
+    return this.http.post<Exame>(this.API, exame); 
   }
 
   deleteExame(exameId: number): Observable<Exame> {
-    const url = `${this.API}/${exameId}`; // Lógica para excluir o exame
+    const url = `${this.API}/${exameId}`; 
     return this.http.delete<Exame>(url);
   }
 }

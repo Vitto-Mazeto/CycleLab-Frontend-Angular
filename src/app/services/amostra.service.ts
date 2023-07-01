@@ -16,16 +16,16 @@ export class AmostraService {
   }
 
   addAmostra(amostra: Amostra): Observable<Amostra> {
-    return this.http.post<Amostra>(this.API, amostra); // Fazer lógica para adicionar a amostra
+    return this.http.post<Amostra>(this.API, amostra);
   }
 
   editAmostra(amostra: Amostra): Observable<Amostra> {
-    const url = `${this.API}/${amostra.id}`; // Fazer lógica para editar a amostra
+    const url = `${this.API}/${amostra.id}`;
     return this.http.put<Amostra>(url, amostra);
   }
 
   deleteAmostra(amostraId: number): Observable<Amostra> {
-    const url = `${this.API}/${amostraId}`; // Fazer lógica para excluir a amostra
+    const url = `${this.API}/${amostraId}`;
     return this.http.delete<Amostra>(url);
   }
 

@@ -16,13 +16,13 @@ export class UserService {
     return this.http.get<User[]>(this.API)
   }
 
-  editUserRole(userLogin: string): Observable<User> { //Fazer lógica de mudar o role do usuário
+  editUserRole(userLogin: string): Observable<User> {
     const url = `${this.API}/${userLogin}/alterar-permissao`
     return this.http.put<User>(url, {})
 
   }
 
-  excluir(userLogin: string): Observable<User> { // Fazer lógica de excluir o usuário
+  excluir(userLogin: string): Observable<User> {
     const url = `${this.API}/${userLogin}`
     return this.http.delete<User>(url)
   }

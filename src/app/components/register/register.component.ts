@@ -71,6 +71,7 @@ export class RegisterComponent implements OnInit {
     this.userRegister.isAdmin = this.formulario.get('isAdmin')?.value;
   }
 
+  // Caso de certo o cadastro, o login já é feito automaticamente, guardando o token no local storage
   handleRegisterResponse(response: any): void {
     if (response.sucesso) {
       const userLogin = new UserLoginViewModel();
