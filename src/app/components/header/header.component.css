@@ -1,53 +1,78 @@
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 10px;
-    background-color: #475E6B;
-    height: 6vh;
-  }
-  
+  position: relative; /* Adicionado para que a posição absoluta funcione corretamente */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #475E6B;
+  height: 6vh;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.left-section h1 {
+  font-size: 18px;
+  color: #FFF;
+  font-weight: 400;
+  margin: 0;
+}
+
+.left-section img {
+  height: 3em; 
+}
+
+.middle-section {
+  position: absolute;
+  left: 51%;
+  transform: translateX(-50%);
+}
+
+.middle-section ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+}
+
+.middle-section ul li {
+  white-space: nowrap;
+}
+
+.middle-section ul li a {
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.right-section .profile-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.right-section a {
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+}
+
+.logout-link {
+  cursor: pointer;
+}
+
+/* Media query para ocultar o título em telas menores */
+@media (max-width: 600px) {
   .left-section h1 {
-    font-size: 18px;
-    color: #FFF;
-    font-weight: 400;
+    display: none;
   }
-
-  .left-section img {
-    height: 3em; 
-    position: absolute; 
-    top: 0.3em; 
-    left: 0.7em; 
-  }
-  
-  .middle-section ul {
-    list-style: none;
-    display: flex;
-    margin-right: 100px;
-  }
-  
-  .middle-section ul li {
-    margin-right: 10px;
-  }
-  
-  .middle-section ul li a {
-    text-decoration: none;
-    color: #FFF;
-    font-size: 14px;
-  }
-  
-  .right-section a {
-    margin-left: 10px;
-    text-decoration: none;
-    color: #FFF;
-    font-size: 14px;
-  }
-  
-  .right-section a:first-child {
-    margin-left: 0;
-  }
-
-  .logout-link {
-    cursor: pointer;
-  }
-  
+}

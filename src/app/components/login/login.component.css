@@ -70,3 +70,22 @@
     padding: 10px;
   }
   
+  @media (max-width: 600px) {
+    .left-section {
+      flex: 1;
+      padding: 20px;
+      background-color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+  
+    .right-section {
+      display: none;
+    }
+
+    .logo-section img {
+      display: none; /* Ocultar a imagem do logotipo no modo responsivo */
+    }
+  }

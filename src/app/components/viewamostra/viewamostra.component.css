@@ -51,7 +51,7 @@ label {
 }
 
 input {
-  width: 98%;
+  width: 100%;
   padding: 8px;
   border: 1px solid #000000;
   border-radius: 5px;
@@ -68,4 +68,25 @@ input {
 button {
   width: 100%;
   padding: 10px;
+}
+
+/* Media query para telas menores que 600px */
+@media (max-width: 600px) {
+  .add-container {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .left-section {
+    width: 100%;
+  }
+  
+  .right-section {
+    padding: 40px;
+    margin: 15px;
+  }
+  
+  .card-header {
+    display: none;
+  }
 }
