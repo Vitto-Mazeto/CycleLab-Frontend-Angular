@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_BASE_URL } from '../config';
 
 import { UserLoginViewModel } from './../models/userLoginViewModel';
 import { UserRegisterViewModel } from '../models/userRegisterViewModel';
@@ -10,7 +11,7 @@ import { UserRegisterViewModel } from '../models/userRegisterViewModel';
 })
 export class AuthService {
 
-  private baseUrl = 'https://localhost:7237/User';
+  private baseUrl = `${API_BASE_URL}/User`;
 
   constructor(private http: HttpClient) { }
 
