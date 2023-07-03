@@ -24,4 +24,13 @@ export class AuthService {
     const url = `${this.baseUrl}/login`;
     return this.http.post<any>(url, user);
   }
+
+  public getUserRole(): string {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const tokenPayload = JSON.parse(atob(token.split('.')[1]));
+      return tokenPayload.role;
+    }
+    return '';
+  }
 }

@@ -42,12 +42,14 @@ const routes: Routes = [
   {
     path: 'addamostra',
     component: AddamostraComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
+    data: { requiredRole: 'ADMIN' }
   },
   {
     path: 'editamostra/:id',
     component: EditamostraComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
+    data: { requiredRole: 'ADMIN' }
   },
   {
     path: 'viewamostra/:id',
