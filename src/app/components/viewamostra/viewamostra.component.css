@@ -40,6 +40,16 @@
   margin-bottom: 20px;
 }
 
+button:disabled {
+  display: none;
+}
+
+p {
+  font-size: small;
+  margin-bottom: 10px;
+  color: #ff000091
+}
+
 .form-group {
   margin-bottom: 15px;
 }
