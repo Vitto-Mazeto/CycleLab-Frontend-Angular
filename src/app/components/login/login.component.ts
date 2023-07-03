@@ -66,8 +66,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', token);
       this.router.navigate(['/homepage']);
     } else {
-      console.log('Usuário ou senha inválidos');
-      this.setInvalidAccountError();
+      console.log('Ocorreu um erro durante a solicitação de login');
     }
   }
 
@@ -75,7 +74,7 @@ export class LoginComponent implements OnInit {
     if (error.status === 401) {
       this.setInvalidAccountError();
     } else {
-      console.error('Ocorreu um erro durante a solicitação de login:', error);
+      console.log('Ocorreu um erro durante a solicitação de login:', error);
     }
   }
 
