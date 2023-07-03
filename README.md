@@ -1,6 +1,6 @@
 # CycleLab - Frontend
 
-CycleLab Frontend é uma aplicação Angular que fornece uma interface de usuário responsiva para o sistema laboratorial interno CycleLab. Esta aplicação consome a API fornecida pelo backend em ASP.NET, que pode ser encontrada no repositório [CycleLab-Backend-ASP.NET](https://github.com/Vitto-Mazeto/CycleLab-Backend-ASP.NET). Durante o desenvolvimento, testei o uso exclusivo de imagens geradas pelo Bing Image Generator, e os resultados foram muito satisfatórios para o projeto, mostrando que a IA chegou para revolucionar.
+CycleLab Frontend é uma aplicação Angular que fornece uma interface de usuário responsiva para o sistema laboratorial interno CycleLab. Esta aplicação consome a API fornecida pelo backend em ASP.NET, que pode ser encontrada no repositório [CycleLab-Backend-ASP.NET](https://github.com/Vitto-Mazeto/CycleLab-Backend-ASP.NET). Durante o desenvolvimento testei o uso exclusivo de imagens geradas pelo Bing Image Generator, e os resultados foram muito satisfatórios para o projeto, mostrando que a IA chegou para revolucionar.
 
 ![GIF 1](docs/images/gif-desktop.gif)
 ![GIF 2](docs/images/gif-mobile.gif)
@@ -12,6 +12,7 @@ CycleLab Frontend é uma aplicação Angular que fornece uma interface de usuár
 - Utilização de auth.guard para a proteção das rotas
 - Gerenciamento de usuários: criação, edição e exclusão de contas de usuário.
 - Visualização e manipulação de amostras e exames.
+- Diretivas personalizadas Role-Based, pelo token JWT
 
 ## Pré-requisitos
 
