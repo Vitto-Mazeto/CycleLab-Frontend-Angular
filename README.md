@@ -26,7 +26,7 @@ Siga as etapas abaixo para configurar e executar o frontend do CycleLab:
 2. Clone o repositório do CycleLab Frontend:
 
    ```shell
-   git clone https://github.com/seu-usuario/CycleLab-Frontend-Angular.git
+   git clone https://github.com/Vitto-Mazeto/CycleLab-Frontend-Angular.git
     ```
 3. Acesse a pasta do projeto:
     ```shell
