@@ -27,8 +27,14 @@ export class RegisterComponent implements OnInit {
   initializeForm(): void {
     this.formulario = this.formBuilder.group(
       {
-        email: ['', Validators.compose([Validators.required, Validators.email])],
-        senha: ['', Validators.compose([Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,}$')])],
+        email: ['', Validators.compose([
+          Validators.required,
+          Validators.email
+        ])],
+        senha: ['', Validators.compose([
+          Validators.required,
+          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,}$')
+        ])],
         isAdmin: [false],
         senhaConfirmacao: ['', Validators.required]
       },
