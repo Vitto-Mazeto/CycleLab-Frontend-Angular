@@ -5,7 +5,8 @@ import { AuthService } from '../services/auth.service';
   selector: '[appRoleBased]'
 })
 export class RoleBasedDirective implements OnInit {
-  @Input('appRoleBasedAccess') requiredRole!: string;
+  // Com esse input consigo colocar o valor no html da role que eu quero
+  @Input('appRoleBased') requiredRole!: string;
 
   constructor(private elementRef: ElementRef, private authService: AuthService) {}
 
