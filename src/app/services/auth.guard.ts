@@ -1,37 +1,26 @@
-import { Injectable, inject } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from './auth.service';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class authGuard implements CanActivate {
-  constructor(private router: Router, private authService: AuthService) {}
+export const authGuard: CanActivateFn = (route, state) => {
+  const router = inject(Router);
+  const authService = inject(AuthService);
+  const token = localStorage.getItem('token');
+  if (!token) {
+    router.navigate(['/login']);
+    return false;
+  }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot,): boolean {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      this.router.navigate(['/login']);
+  // Verifico se a rota tem alguma informação de role para o acesso
+  if (route.data) {
+    const userRole = authService.getUserRole();
+    const requiredRole = route.data['requiredRole']
+    if (requiredRole && requiredRole !== userRole) {
+      alert('Você não tem permissão para acessar essa página');
+      router.navigate(['/homepage']);
       return false;
     }
-
-    const userRole = this.authService.getUserRole();
-
-    // Verifique se o usuário tem permissão para acessar a rota
-    if (this.hasPermissionForRoute(route, userRole)) {
-      return true;
-    }
-
-    alert('Apenas Administradores');
-    return false; // Bloqueia o acesso à rota
   }
 
-  private hasPermissionForRoute(route: ActivatedRouteSnapshot, userRole: string): boolean {
-    const requiredRole = route.data['requiredRole'];
-    if (requiredRole && requiredRole !== userRole) {
-      return false; // O usuário não tem permissão para acessar a rota
-    }
-
-    return true; // O usuário tem permissão para acessar a rota
-  }
-}
+  return true;
+};
