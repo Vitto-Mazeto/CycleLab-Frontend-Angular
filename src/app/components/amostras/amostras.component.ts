@@ -18,16 +18,20 @@ export class AmostrasComponent implements OnInit {
   }
 
   loadAmostras(): void {
-    this.service.list().subscribe((listaAmostras) => {
+    this.service.list().subscribe((listaAmostras: Amostra[]) => {
       this.listaAmostras = listaAmostras;
     });
   }
 
   deleteAmostra(amostra: Amostra): void {
-    this.service.deleteAmostra(amostra.id!).subscribe((response) => {
-      console.log(response);
-      this.loadAmostras();
-    });
+    if (amostra.id) {
+      this.service.deleteAmostra(amostra.id).subscribe((response) => {
+        console.log(response);
+        this.loadAmostras();
+      });
+    } else {
+      console.log('Não foi possível excluir a amostra');
+    }
   }
 
   redirectToPage(id: number): void {
