@@ -17,6 +17,7 @@ import { AddamostraComponent } from './components/addamostra/addamostra.componen
 import { EditamostraComponent } from './components/editamostra/editamostra.component';
 import { ViewamostraComponent } from './components/viewamostra/viewamostra.component';
 import { FakechatbotComponent } from './components/fakechatbot/fakechatbot.component';
+import { RoleBasedDirective } from './directives/role-based.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FakechatbotComponent } from './components/fakechatbot/fakechatbot.compo
     AddamostraComponent,
     EditamostraComponent,
     ViewamostraComponent,
-    FakechatbotComponent
+    FakechatbotComponent,
+    RoleBasedDirective
   ],
   imports: [
     BrowserModule,
